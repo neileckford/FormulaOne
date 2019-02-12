@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="FormulaOne">
+  <DataContextMoniker Name="/FormulaOneDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c0180316-4660-4101-9468-1693d203a012" absoluteBounds="0.75, 4.25, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/FormulaOneDataContext/Circuit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e07a95f8-7541-4ecd-87e0-eb522ce0b5f0" absoluteBounds="0.765, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="378d09b1-e5c3-482a-a667-983cc57e64eb" absoluteBounds="0.75, 1, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/FormulaOneDataContext/Team" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a764d831-c3f3-4958-8031-f5cc56d0b14f" absoluteBounds="0.765, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="703f77a6-aa22-4ac2-ae95-fd6830c60553" absoluteBounds="3.5, 1.125, 2, 1.5785953776041664">
+      <DataClassMoniker Name="/FormulaOneDataContext/Driver" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ebdf6ca-a68c-4d88-ab3e-9ce4c68f43a7" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fe45f6a3-1e53-4c24-bb33-ec5d39b51ca2" absoluteBounds="3.5, 4.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/FormulaOneDataContext/Race" />
+      <nestedChildShapes>
+        <elementListCompartment Id="96398cc7-a230-4f06-ba9f-364917f66616" absoluteBounds="3.515, 4.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b2babd0c-24d9-4554-b71a-992059ad1c44" absoluteBounds="6.25, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/FormulaOneDataContext/RaceResult" />
+      <nestedChildShapes>
+        <elementListCompartment Id="55e2e26f-f6bd-4caf-820e-c714e31792e7" absoluteBounds="6.265, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.91429768880208); (3.5 : 1.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FormulaOneDataContext/Team/Team_Driver" />
+      <nodes>
+        <classShapeMoniker Id="378d09b1-e5c3-482a-a667-983cc57e64eb" />
+        <classShapeMoniker Id="703f77a6-aa22-4ac2-ae95-fd6830c60553" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.84699625651042); (3.5 : 4.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FormulaOneDataContext/Circuit/Circuit_Race" />
+      <nodes>
+        <classShapeMoniker Id="c0180316-4660-4101-9468-1693d203a012" />
+        <classShapeMoniker Id="fe45f6a3-1e53-4c24-bb33-ec5d39b51ca2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 1.91429768880208); (6.25 : 1.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FormulaOneDataContext/Driver/Driver_RaceResult" />
+      <nodes>
+        <classShapeMoniker Id="703f77a6-aa22-4ac2-ae95-fd6830c60553" />
+        <classShapeMoniker Id="b2babd0c-24d9-4554-b71a-992059ad1c44" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.91429768880208); (7.25 : 4.91429768880208); (7.25 : 2.8381982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FormulaOneDataContext/Race/Race_RaceResult" />
+      <nodes>
+        <classShapeMoniker Id="fe45f6a3-1e53-4c24-bb33-ec5d39b51ca2" />
+        <classShapeMoniker Id="b2babd0c-24d9-4554-b71a-992059ad1c44" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.03125); (6.25 : 1.03125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FormulaOneDataContext/Team/Team_RaceResult" />
+      <nodes>
+        <classShapeMoniker Id="378d09b1-e5c3-482a-a667-983cc57e64eb" />
+        <classShapeMoniker Id="b2babd0c-24d9-4554-b71a-992059ad1c44" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

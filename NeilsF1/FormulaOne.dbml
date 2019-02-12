@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FormulaOne" Class="FormulaOneDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\FormulaOne.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="FormulaOneConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Circuit" Member="Circuits">
+    <Type Name="Circuit">
+      <Column Name="CircuitID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CircuitName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Circuit_Race" Member="Races" ThisKey="CircuitID" OtherKey="CircuitID" Type="Race" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Team" Member="Teams">
+    <Type Name="Team">
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TeamName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Constructor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Chassis" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Engine" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Team_Driver" Member="Drivers" ThisKey="TeamID" OtherKey="TeamID" Type="Driver" />
+      <Association Name="Team_RaceResult" Member="RaceResults" ThisKey="TeamID" OtherKey="TeamID" Type="RaceResult" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Driver" Member="Drivers">
+    <Type Name="Driver">
+      <Column Name="DriverID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SecondName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Driver_RaceResult" Member="RaceResults" ThisKey="DriverID" OtherKey="DriverID" Type="RaceResult" />
+      <Association Name="Team_Driver" Member="Team" ThisKey="TeamID" OtherKey="TeamID" Type="Team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Race" Member="Races">
+    <Type Name="Race">
+      <Column Name="RaceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RaceName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CircuitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RaceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Race_RaceResult" Member="RaceResults" ThisKey="RaceID" OtherKey="RaceID" Type="RaceResult" />
+      <Association Name="Circuit_Race" Member="Circuit" ThisKey="CircuitID" OtherKey="CircuitID" Type="Circuit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RaceResult" Member="RaceResults">
+    <Type Name="RaceResult">
+      <Column Name="RaceResultID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RaceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DriverID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FinalPosition" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RaceTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Association Name="Driver_RaceResult" Member="Driver" ThisKey="DriverID" OtherKey="DriverID" Type="Driver" IsForeignKey="true" />
+      <Association Name="Race_RaceResult" Member="Race" ThisKey="RaceID" OtherKey="RaceID" Type="Race" IsForeignKey="true" />
+      <Association Name="Team_RaceResult" Member="Team" ThisKey="TeamID" OtherKey="TeamID" Type="Team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Result" Method="Result">
+    <Parameter Name="param1" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ResultResult">
+      <Column Name="RaceResultID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FinalPosition" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Expr1" Type="System.String" DbType="NVarChar(101)" CanBeNull="true" />
+      <Column Name="TeamName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
